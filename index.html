@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dear Julia</title>
+
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: #f7f7fb;
+        font-family: Arial, sans-serif;
+        height: 100vh;
+    }
+
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 85%;
+        max-width: 800px;
+        padding: 25px;
+        background: rgba(255,255,255,0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 0 40px rgba(255, 105, 180, 0.25);
+        z-index: 10;
+    }
+
+    .title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #ff4da6;
+        text-align: center;
+        text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+        margin-bottom: 15px;
+    }
+
+    .text {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #222;
+        white-space: pre-wrap;
+    }
+
+    /* hearts */
+    .heart {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        transform: rotate(45deg);
+        animation: floatUp linear forwards;
+        opacity: 0.8;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+    }
+
+    .heart::before { top: -9px; left: 0; }
+    .heart::after { left: -9px; top: 0; }
+
+    @keyframes floatUp {
+        from { transform: translateY(0) rotate(45deg); opacity: 1; }
+        to { transform: translateY(-120vh) rotate(45deg); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="title">Dear Julia</div>
+    <div class="text">
+Dear, Julia I write this from my deepest part of my heart,
+Since I met you my life was better in a good way,
+I remember all the memories we did together. And our journey,
+It's almost our 1 year anniversary.
+
+Giving you that wifty keychain was my first interaction with you,
+my second interaction was when I wanted you to sign my clothes.
+Our biggest interaction was when we went on our first hangout,
+my first time holding your hand was in Han Guk,
+I felt some love that I never felt before.
+
+At Castle Amazing we made our first ever memories,
+That hangout made us understand each other better.
+Every call we made, every thing we said together are my favourite times of my life.
+
+I just wanna say that I love you and I will never stop loving you.
+
+-James.
+    </div>
+</div>
+
+<script>
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.className = "heart";
+
+    const colors = ["#ff4da6", "#b266ff", "#ff66cc", "#cc99ff"];
+    let c = colors[Math.floor(Math.random() * colors.length)];
+
+    heart.style.background = c;
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.bottom = "-20px";
+
+    let size = Math.random() * 15 + 10;
+    heart.style.width = size + "px";
+    heart.style.height = size + "px";
+
+    heart.style.animationDuration = (Math.random() * 4 + 3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 7000);
+}
+
+setInterval(createHeart, 120);
+</script>
+
+</body>
+</html>
